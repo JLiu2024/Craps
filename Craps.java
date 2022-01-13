@@ -36,9 +36,13 @@ public class Craps {
 
         Scan.nextLine();
 
+        Die d = new Die();
         
+        point = d.getSum();
 
-
+        if(point==7 || point==11) {
+            
+        }
 
 
         
