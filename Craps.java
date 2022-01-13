@@ -1,6 +1,10 @@
 import java.util.*;
 
 public class Craps {
+
+    private int rolls = 0;
+    private int point = 0;
+    private boolean hasWon = false;
     public static void main(String[] args) {
 
     }
@@ -20,7 +24,25 @@ public class Craps {
                 System.out.println("3. THe player continues to roll the two dice again until one of two things happens:");
                 System.out.println("either they roll the \"point\" from the first roll again, in which case they win;");
                 System.out.println("or they roll a 7, in which case they lose.");
+            } else {
+                playGame();
             }
         }
+    }
+
+    public void playGame() {
+        System.out.println("Press ENTER to roll the dice.");
+        Scanner Scan = new Scanner(System.in);
+
+        Scan.nextLine();
+
+        
+
+
+
+
+        
+
+
     }
 }
