@@ -5,6 +5,7 @@ public class Craps {
     private int rolls = 0;
     private int point = 0;
     private boolean hasWon = false;
+    private int lastRoll = 0;
     public static void main(String[] args) {
 
     }
@@ -40,13 +41,15 @@ public class Craps {
         
         point = d.getSum();
 
-        if(point==7 || point==11) {
-            
-        }
+        if(rolls==0 && (point==7 || point==11)) {
+            System.out.println();
+            System.out.println("You rolled a " + d.getFirst() + " and a " + d.getSecond() + "!");
+            System.out.println("The point is " + d.getSum() + ".");
+            System.out.println("You have won!");
+            introduction();
+        } else if()
 
 
-        
-
-
+    
     }
 }
