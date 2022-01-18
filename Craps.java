@@ -2,15 +2,20 @@ import java.util.*;
 
 public class Craps {
 
-    private int rolls = 0;
-    private int point = 0;
-    private boolean hasWon = false;
-    private int lastRoll = 0;
+    static int rolls = 0;
+    static int point = 0;
+    static int lastRoll = 0;
+    static int firstRoll = 0;
     public static void main(String[] args) {
-
+        introduction();
     }
 
-    public void introduction() {
+    public static void introduction() {
+        rolls=0;
+        point=0;
+        lastRoll=0;
+        firstRoll=0;
+        System.out.println();
         System.out.println("Would you like to play Craps? (Y/N)");
 
         Scanner Scan = new Scanner(System.in);
@@ -25,13 +30,15 @@ public class Craps {
                 System.out.println("3. THe player continues to roll the two dice again until one of two things happens:");
                 System.out.println("either they roll the \"point\" from the first roll again, in which case they win;");
                 System.out.println("or they roll a 7, in which case they lose.");
+                playGame();
             } else {
                 playGame();
             }
         }
     }
 
-    public void playGame() {
+    public static void playGame() {
+        System.out.println();
         System.out.println("Press ENTER to roll the dice.");
         Scanner Scan = new Scanner(System.in);
 
@@ -39,17 +46,46 @@ public class Craps {
 
         Die d = new Die();
         
-        point = d.getSum();
+        int point = d.getSum();
 
-        if(rolls==0 && (point==7 || point==11)) {
+        if(rolls==0) {
+            rolls++;
+            firstRoll+=point;
+
+            if(point==7 || point==11) {
+                System.out.println();
+                System.out.println("You rolled a " + d.getFirst()   + " and a " + d.getSecond() + "!");
+                System.out.println("The point is " + d.getSum() + ".");
+                System.out.println("You have won!");
+                introduction();
+            } else if(point==2 || point == 3 || point == 12) {
+                System.out.println();
+                System.out.println("You rolled a " + d.getFirst() + " and a " + d.getSecond() + "!");
+                System.out.println("The point is " + d.getSum() + ".");
+                System.out.println("You have lost!");
+                introduction();
+            }
+            else {
+                System.out.println();
+                System.out.println("You rolled a " + d.getFirst() + " and a " + d.getSecond() + "!");
+                System.out.println("The point is " + d.getSum() + ".");
+                playGame();
+            }
+
+        } else if(point==firstRoll) {
+            rolls++;
             System.out.println();
             System.out.println("You rolled a " + d.getFirst() + " and a " + d.getSecond() + "!");
             System.out.println("The point is " + d.getSum() + ".");
             System.out.println("You have won!");
             introduction();
-        } else if()
-
-
-    
+        } else if(rolls!=0 && point==7) {
+            rolls++;
+            System.out.println();
+            System.out.println("You rolled a " + d.getFirst() + " and a " + d.getSecond() + "!");
+            System.out.println("The point is " + d.getSum() + ".");
+            System.out.println("You have lost!");
+            introduction();
+        }
     }
 }
