@@ -1,3 +1,9 @@
+/**
+ * @author Jeffrey Liu
+ * @version 1/18/2022
+ * Craps Project for AP CS A
+*/
+
 import java.util.*;
 
 public class Craps {
@@ -16,13 +22,16 @@ public class Craps {
         lastRoll=0;
         firstRoll=0;
         System.out.println();
-        System.out.println("Would you like to play Craps? (Y/N)");
 
         Scanner Scan = new Scanner(System.in);
 
-        if(Scan.next().equals("Y")) {
-            System.out.println("Do you need instructions? (Y/N)");
-            if(Scan.next().equals("Y")) {
+        System.out.println("Would you like to play Craps (Y/n)?");
+        String shouldPlay = Scan.nextLine();
+        if (shouldPlay.equals("") || shouldPlay.substring(0,1).equalsIgnoreCase("y"))
+        {
+            System.out.println("Do you need instructions? (Y/n)");
+            String needInstructions = Scan.nextLine();
+            if (needInstructions.substring(0,1).equalsIgnoreCase("y")) {
                 System.out.println("The basic rules for playing craps are relatively simple:");
                 System.out.println("1. A player rolls two six-sided dice and adds the numbers rolled together.");
                 System.out.println("2. On this first roll, a 7 or an 11 automatically wins, and a 2, 3, or 12 automatically loses, and play is over.");
@@ -34,7 +43,7 @@ public class Craps {
             } else {
                 playGame();
             }
-        }
+        }   
     }
 
     public static void playGame() {
@@ -86,6 +95,11 @@ public class Craps {
             System.out.println("The point is " + d.getSum() + ".");
             System.out.println("You have lost!");
             introduction();
+        } else {
+            System.out.println();
+            System.out.println("You rolled a " + d.getFirst() + " and a " + d.getSecond() + "!");
+            System.out.println("The point is " + d.getSum() + ".");
+            playGame();
         }
     }
 }
